@@ -4,6 +4,10 @@ An interactive 3D digital twin of an angle-of-repose laboratory experiment. It s
 
 ![The 3D simulator running an automatic quartz-sand trial](assets/simulator-running.png)
 
+## Download the complete demo
+
+[Download the full Angle of Repose Digital Twin demo](downloads/Angle_of_Repose_Digital_Twin_Full_Demo.zip). It includes the fresh runnable simulator and the preserved completed research. A reviewer can run the entire 18-trial workflow and see the program generate its own measurements, CSV dataset, validation report, research graphs, and replay files.
+
 ## View the completed research
 
 - Open [`index.html`](index.html) for the public final report, or open the preserved original at [`completed_research/01_MAIN_RESEARCH_REPORT.html`](completed_research/01_MAIN_RESEARCH_REPORT.html).
