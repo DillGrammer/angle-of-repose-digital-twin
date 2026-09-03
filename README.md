@@ -2,6 +2,8 @@
 
 An interactive 3D digital twin of an angle-of-repose laboratory experiment. It simulates six quartz-sand and glass-bead conditions, runs three trials per condition, measures each pile, saves reproducible data, and compares the results with a UCF experiment and independently published experimental benchmarks.
 
+![The 3D simulator running an automatic quartz-sand trial](assets/simulator-running.png)
+
 ## View the completed research
 
 - Open [`index.html`](index.html) or [`01_MAIN_RESEARCH_REPORT.html`](01_MAIN_RESEARCH_REPORT.html) for the final graphs and comparison tables.
