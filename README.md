@@ -25,17 +25,34 @@ This is also a first step toward a larger idea: a reusable system that can turn 
 
 ## The development story
 
-The project began with a simple question: could I digitally recreate a friend's UCF angle-of-repose experiment and compare the two without forcing the simulation to agree with the original data? The scope grew from drawing a sand pile into building a complete research workflow for six material conditions, including the important one-cup versus two-cup comparison.
+This started with a real research bottleneck. A friend had spent a full week at UCF working with a professor and team on the physical angle-of-repose experiment. The setup needed fabricated parts, time to clean material out between trials, repeated manual resets, travel, and several people doing different jobs. I wondered whether a digital twin could perform the same experimental sequence faster and more reproducibly—without being told what answer to produce.
 
-The first serious diagnostic did not pass. Quartz had not finished releasing and settling before the safety cutoff, so the program correctly refused to publish an angle. Instead of weakening the check or accepting a convenient number, I changed the timing logic and tested it again.
+My first prototype was a 2D particle model. It looked like a pile, but the pre-validation checks showed that the biggest remaining problem was the physics model itself, not the slope-measurement code. That was an important distinction: improving the graph would not repair unrealistic particle behavior. I restarted the core as a true 3D rigid-body simulation using PyBullet.
 
-The pile measurement also exposed a problem: a few particles could roll away from the main pile and pull the fitted slope too low. I revised the measurement so it identifies the supported pile body, rejects isolated runout particles, and compares perpendicular views before accepting a result.
+The notebook records the first 3D checkpoint as a major improvement: the first material dropped from more than 12% error to under 5%. Other material classes were still too high, especially some sieved quartz and glass-bead runs. I corrected physical inputs such as particle size and contact behavior, not the UCF comparison answers, and kept testing.
 
-The interface then became the next experiment. Early versions used technical messages about caches and showed a red “locked” state while diagnostics were running. Those messages were accurate to the code but confusing to a person. I replaced them with plain-language diagnostic status, centered the workflow, removed the crowded manual mode, and made each trial automatic after one deliberate Run click.
+Then came the moment written in large letters in my notes: **“A breakthrough has occurred.”** The pre-validator detected that bad data was about to be produced and stopped the simulation before it could present an unreliable angle. That changed the goal from “make an accurate-looking animation” to “build a system that knows when it should not trust itself.” It also led to clearer separation between sieved and unsieved quartz behavior.
 
-Replays were another turning point. Automatic trials originally saved correctly but were difficult to review afterward. I redesigned them into one organized playback system with previous/next navigation, play, pause, restart, a timeline, and one speed control shared by live trials and replays.
+The measurement system found another subtle failure. A few particles could roll away from the supported pile and pull a fitted slope too low. I revised the analysis to identify the main pile body, reject isolated runout particles, and compare perpendicular views before accepting a result.
 
-Finally, I ran all 18 trials. The completed simulation was closer to the selected published benchmark in four of six conditions, while the UCF experiment was closer in two. Just as importantly, the two-cup glass-bead result showed where this version still needs improvement. I kept that result instead of hiding or rerunning it, because the point of the project is trustworthy research rather than a perfect-looking graph.
+Once the science pipeline worked, the interface became the next experiment. Early builds mentioned caches, showed a red “locked” state during checks, and trapped the user inside the automatic run. My notes correctly predicted that those messages would confuse someone who had not built the project. I replaced them with plain-language diagnostic status, centered and simplified the controls, made each trial automatic after one deliberate **Run Current Trial** click, and restored control after every run.
+
+Replays were the final major interaction problem. Automatic trials saved their data, but initially there was no clear way to move back through completed trials. The finished design uses one organized playback bar with previous/next navigation, play, pause, restart, a timeline, and one speed control shared by live trials and replays.
+
+After roughly 15 hours of research, testing, debugging, and documentation, I completed all 18 trials. The simulation was closer to the selected published benchmark in four of six conditions, while the UCF experiment was closer in two. The two-cup glass-bead result still has a large error. I kept it instead of hiding or rerunning it, because this project is about trustworthy research, not a perfect-looking graph.
+
+### Notebook checkpoints
+
+These were handwritten test checkpoints, not a complete time log:
+
+- **Early prototype:** deliberately added small random variation to represent differences between grains and recorded an initial 15-minute simulation run.
+- **Version 4:** an unsuccessful short test—written simply as “I messed up”—that exposed how easy it was for a plausible animation to produce weak research data.
+- **Version 6:** identified incorrect glass-bead behavior, symmetry problems, and flawed physical inputs.
+- **Pre-validation breakthrough:** the diagnostic refused to run when it detected that unreliable output was likely.
+- **First full 3D build:** replaced the 2D solver with PyBullet after validation showed the physics model was the limiting factor.
+- **Final usability pass:** fixed automatic-run lock-in, simplified technical language, reorganized the controls, and improved comparisons on the final results page.
+
+Hackatime currently verifies 4.0 hours from the project-specific coding records. I estimate approximately 15 total hours because research, test runs, result review, handwritten planning, and some coding time were not captured by the editor tracker.
 
 ### What I learned
 
