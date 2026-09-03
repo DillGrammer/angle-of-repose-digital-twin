@@ -6,9 +6,11 @@ An interactive 3D digital twin of an angle-of-repose laboratory experiment. It s
 
 ## View the completed research
 
-- Open [`index.html`](index.html) or [`01_MAIN_RESEARCH_REPORT.html`](01_MAIN_RESEARCH_REPORT.html) for the final graphs and comparison tables.
+- Open [`index.html`](index.html) for the public final report, or open the preserved original at [`completed_research/01_MAIN_RESEARCH_REPORT.html`](completed_research/01_MAIN_RESEARCH_REPORT.html).
 - The report clearly identifies the simulation, UCF experiment, and published benchmark series.
-- All 18 completed trials and their browser replays are included.
+- All 18 completed trials, browser replays, and raw reproducibility data are stored in [`completed_research/`](completed_research/).
+
+The completed research is separated from the runnable simulator. A new demo run writes its files at the project root and cannot replace the preserved results inside `completed_research/`.
 
 ## Start the experiment
 
@@ -44,14 +46,14 @@ The simulator does not silently retry an invalid measurement. It stops and repor
 - The measurement rejects isolated runout beads and requires agreement between perpendicular views.
 - Every completed trial records its seed, settings, timing, result, and replay data.
 
-## Included research files
+## Completed research files
 
-- `00_SIMULATOR_DIAGNOSTIC_REPORT.html`
-- `01_MAIN_RESEARCH_REPORT.html`
-- `02_COMPLETE_TRIAL_DATA_AND_SETTINGS.csv`
-- `03_VISUAL_REPLAYS_OPEN_THESE/`
-- `04_RAW_REPLAY_DATA_FOR_REPRODUCIBILITY/`
-- `05_SIMULATION_VALIDATION_AND_ACCURACY.html`
+- `completed_research/00_SIMULATOR_DIAGNOSTIC_REPORT.html`
+- `completed_research/01_MAIN_RESEARCH_REPORT.html`
+- `completed_research/02_COMPLETE_TRIAL_DATA_AND_SETTINGS.csv`
+- `completed_research/03_VISUAL_REPLAYS_OPEN_THESE/`
+- `completed_research/04_RAW_REPLAY_DATA_FOR_REPRODUCIBILITY/`
+- `completed_research/05_SIMULATION_VALIDATION_AND_ACCURACY.html`
 
 ## Technology
 
